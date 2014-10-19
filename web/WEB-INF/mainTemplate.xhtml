@@ -1,35 +1,43 @@
-<?xml version='1.0' encoding='UTF-8' ?> 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<%@tag description="Main Webpage Template" pageEncoding="UTF-8"%>
+<%@page contentType="text/html"%>
+<%@page pageEncoding="UTF-8"%>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
 
-    <h:head>
+<%@attribute name="customcss" fragment="true" %>
+<%@attribute name="customjs" fragment="true" %>
+<%@attribute name="title"  required="true" %>
+
+
+<html:html lang="true">
+    <head>
         <link type="image/x-icon" href="http://www.ucol.mx/cms/img/favicon.ico" rel="icon" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta charset="utf-8"/>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <meta name="description" content="Sistema de control de asistencias para profesores de la Universidad de Colima"/>
-        <meta name="author" content="Arekar Technologies"/>
+        <meta charset="utf-8"/>">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>">
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>">
+        <meta name="description" content="Sistema de control de asistencias para profesores de la Universidad de Colima"/>">
+        <meta name="author" content="Arekar Technologies"/>">
+
 
         <!-- Bootstrap Core CSS -->
-        <h:outputStylesheet name="/css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="<s:url value="/resources/css/bootstrap.min.css"/>">
 
         <!-- MetisMenu CSS -->
-        <h:outputStylesheet name="/css/plugins/metisMenu/metisMenu.min.css"/>
+        <link rel="stylesheet" type="text/css" href="<s:url value="/resources/css/plugins/metisMenu/metisMenu.min.css"/>">
 
        
 
         <!-- Custom CSS -->
-        <h:outputStylesheet name="/css/sb-admin-2.css"/>
+        <link rel="stylesheet" type="text/css" href="<s:url value="/resources/css/sb-admin-2.css"/>">
 
         
 
         <!-- Custom Fonts -->
-        <h:outputStylesheet name="/font-awesome-4.1.0/css/font-awesome.min.css"/>
+        <link rel="stylesheet" type="text/css" href="<s:url value="/resources/font-awesome-4.1.0/css/font-awesome.min.css"/>">
         
-        <ui:insert name="customcss"></ui:insert>
+       <jsp:invoke fragment="customcss"/>
 
             <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
             <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -37,37 +45,33 @@
                 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
                 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
             <![endif]-->
-            <title>Control de Asistencias - <ui:insert name="title">Inicio</ui:insert></title>
-    </h:head>
+            <title>Control de Asistencias - ${title}</title>
+            <html:base/>
+    </head>
 
-    <h:body>
+    <body>
         
        
 
-            <ui:insert name="content"></ui:insert>
+            <jsp:doBody/>
 
           
     <!-- /#wrapper -->
 
+
         <!-- jQuery Version 1.11.0 -->
-        <h:outputScript library="js" name="jquery-1.11.0.js"/>
+        <script language="JavaScript" src="<s:url value="/resources/js/jquery-1.11.0.js"/>" type="text/javascript" /> 
 
         <!-- Bootstrap Core JavaScript -->
-        <h:outputScript library="js" name="bootstrap.min.js"/>
+        <script language="JavaScript" src="<s:url value="/resources/js/bootstrap.min.js"/>" type="text/javascript" /> 
 
         <!-- Metis Menu Plugin JavaScript -->
-        <h:outputScript library="js/plugins/metisMenu" name="metisMenu.min.js"/>
-
-        
+        <script language="JavaScript" src="<s:url value="/resources/js/plugins/metisMenu/metisMenu.min.js"/>" type="text/javascript" /> 
 
         <!-- Custom Theme JavaScript -->
-        <h:outputScript library="js" name="sb-admin-2.js"/>
+        <script language="JavaScript" src="<s:url value="/resources/js/sb-admin-2.js"/>" type="text/javascript" /> 
         
         <!-- Template Client JS -->
-        <ui:insert name="customjs">
-            
-            
-        </ui:insert>
-    </h:body>
-
-</html>
+        <jsp:invoke fragment="customjs"/>
+    </body>
+</html:html>
